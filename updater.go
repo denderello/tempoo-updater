@@ -14,6 +14,8 @@ func main() {
 		log.Fatal(err)
 	}
 
+	defer c.Close()
+
 	update, _ := json.Marshal(UpdateMessage{21})
 
 	_, err = c.Do("PUBLISH", "tempoo-update", update)
